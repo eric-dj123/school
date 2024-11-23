@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Lights</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        #lights {
+            display: flex;
+        }
+        .light {
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: gray;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="lights"></div>
+    <script>
+        // Array of 30 colors
+        const colors = [
+            "red", "green", "blue", "yellow", "purple", "orange", "pink", "cyan", 
+            "lime", "magenta", "teal", "gold", "silver", "brown", "violet", 
+            "indigo", "coral", "turquoise", "salmon", "plum", "crimson", 
+            "chartreuse", "navy", "peach", "beige", "maroon", "lavender", 
+            "khaki", "aqua", "orchid"
+        ];
+
+        // Number of lights
+        const numLights = 10;
+
+        // Container for the lights
+        const lightsContainer = document.getElementById("lights");
+
+        // Function to create the light elements
+        function createLights() {
+            for (let i = 0; i < numLights; i++) {
+                const light = document.createElement("div");
+                light.classList.add("light");
+                lightsContainer.appendChild(light);
+            }
+        }
+
+        // Function to animate the lights
+        function animateLights() {
+            const lights = document.querySelectorAll(".light");
+            let colorIndex = 0;
+
+            setInterval(() => {
+                lights.forEach((light, index) => {
+                    light.style.backgroundColor = colors[(colorIndex + index) % colors.length];
+                });
+                colorIndex++;
+            }, 500); // Change color every 500ms
+        }
+
+        // Initialize the lights and animation
+        createLights();
+        animateLights();
+    </script>
+</body>
+</html>
